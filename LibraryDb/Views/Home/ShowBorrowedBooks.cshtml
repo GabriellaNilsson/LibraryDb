@@ -1,0 +1,52 @@
+﻿@model IEnumerable<LibraryDb.Models.Book>
+
+<h1>Show borrowed books by customer</h1>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Author</th>
+                <th>Number of pages</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Description</td>
+                    <td>@book.Author</td>
+                    <td>@book.NumberOfPages</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No books borrowed by this customer</p>
+}
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+
+
