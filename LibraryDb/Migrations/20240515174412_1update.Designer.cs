@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace LibraryDb.Data.Migrations
+namespace LibraryDb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240505003442_secondUpdate")]
-    partial class secondUpdate
+    [Migration("20240515174412_1update")]
+    partial class _1update
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,6 +43,9 @@ namespace LibraryDb.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool?>("IsReturned")
+                        .HasColumnType("bit");
+
                     b.Property<int>("NumberOfPages")
                         .HasColumnType("int");
 
@@ -53,7 +56,7 @@ namespace LibraryDb.Data.Migrations
 
                     b.HasKey("BookId");
 
-                    b.ToTable("Book");
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("LibraryDb.Models.Customer", b =>
@@ -84,7 +87,7 @@ namespace LibraryDb.Data.Migrations
 
                     b.HasKey("CustomerId");
 
-                    b.ToTable("Customer");
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("LibraryDb.Models.CustomerBook", b =>
@@ -113,7 +116,7 @@ namespace LibraryDb.Data.Migrations
 
                     b.HasIndex("FkCustomerId");
 
-                    b.ToTable("CustomerBook");
+                    b.ToTable("CustomerBooks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -17,6 +17,7 @@ namespace LibraryDb.Models
         public string Author { get; set; }
         [Range(1, 1000, ErrorMessage = "Number of pages of book should be between 1 and 1000 charaters")]
         public int NumberOfPages { get; set; }
+        public bool? IsReturned { get; set; }
         public ICollection<CustomerBook>? CustomerBooks { get; set; }
     }
 }

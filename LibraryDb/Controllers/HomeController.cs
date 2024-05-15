@@ -56,10 +56,10 @@ namespace LibraryDb.Controllers
 
         public async Task<IActionResult> FilterCustomer(int? customerId)
         {
+            ViewBag.filterCustomerList = new SelectList(_context.Customers, "CustomerId", "Name");
+
             var filterCustomers = await _context.Customers
                                 .FirstOrDefaultAsync(x => x.CustomerId == customerId);
-
-            ViewBag.filterCustomerList = new SelectList(_context.Customers, "CustomerId", "Name");
 
             if (filterCustomers != null)
             {
@@ -69,22 +69,15 @@ namespace LibraryDb.Controllers
             return View();
         }
 
-        public IActionResult ShowBorrowedBooks (int? customerId)
+        public IActionResult ShowBorrowedBooks (int? bookId)
         {
             var filterBooks = _context.CustomerBooks
-                                    .Include(x => x.Customers)
-                                    .Include(x => x.Book)
-                                    .Where(x => x.FkCustomerId == customerId)
-                                    .Select(x => x.CustomerBook.Book);
+                    .Include(x => x.Customers)
+                    .Include(x => x.Books)
+                    .ToList();
 
-            if (customerId.HasValue)
-            {
-                filterBooks = filterBooks.Where(x => x.FkCustomerId == customerId);
-            }
+            return View(filterBooks);
 
-            var filteredBooks = filterBooks.ToListAsync();
-
-            return View(filteredBooks);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

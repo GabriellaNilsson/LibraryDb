@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace LibraryDb.Data.Migrations
+namespace LibraryDb.Migrations
 {
     /// <inheritdoc />
-    public partial class firstUpdate : Migration
+    public partial class _2update : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace LibraryDb.Data.Migrations
+namespace LibraryDb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -39,6 +39,9 @@ namespace LibraryDb.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool?>("IsReturned")
+                        .HasColumnType("bit");
 
                     b.Property<int>("NumberOfPages")
                         .HasColumnType("int");

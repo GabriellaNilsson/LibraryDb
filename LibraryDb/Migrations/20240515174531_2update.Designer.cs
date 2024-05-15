@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace LibraryDb.Data.Migrations
+namespace LibraryDb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240505004123_update3")]
-    partial class update3
+    [Migration("20240515174531_2update")]
+    partial class _2update
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,9 @@ namespace LibraryDb.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool?>("IsReturned")
+                        .HasColumnType("bit");
 
                     b.Property<int>("NumberOfPages")
                         .HasColumnType("int");

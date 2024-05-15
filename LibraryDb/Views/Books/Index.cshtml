@@ -24,6 +24,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.NumberOfPages)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsReturned)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -41,6 +44,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NumberOfPages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsReturned)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.BookId">Edit</a> |

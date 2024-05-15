@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LibraryDb.Models.Book>
+﻿@model IEnumerable<LibraryDb.Models.CustomerBook>
 
 <h1>Show borrowed books by customer</h1>
 
@@ -7,6 +7,8 @@
     <table class="table">
         <thead>
             <tr>
+                <th>Customer Id</th>
+                <th>Customer name</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Author</th>
@@ -18,10 +20,12 @@
             @foreach (var book in Model)
             {
                 <tr>
-                    <td>@book.Title</td>
-                    <td>@book.Description</td>
-                    <td>@book.Author</td>
-                    <td>@book.NumberOfPages</td>
+                    <td>@book.Customers.CustomerId</td>
+                    <td>@book.Customers.Name</td>
+                    <td>@book.Books.Title</td>
+                    <td>@book.Books.Description</td>
+                    <td>@book.Books.Author</td>
+                    <td>@book.Books.NumberOfPages</td>
                 </tr>
             }
         </tbody>

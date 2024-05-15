@@ -54,7 +54,7 @@ namespace LibraryDb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BookId,Title,Description,Author,NumberOfPages")] Book book)
+        public async Task<IActionResult> Create([Bind("BookId,Title,Description,Author,NumberOfPages,IsReturned")] Book book)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace LibraryDb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BookId,Title,Description,Author,NumberOfPages")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("BookId,Title,Description,Author,NumberOfPages,IsReturned")] Book book)
         {
             if (id != book.BookId)
             {
